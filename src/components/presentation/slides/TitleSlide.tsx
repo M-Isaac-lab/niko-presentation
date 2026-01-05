@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { ChevronDown, Store, BarChart3, Zap } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import logoUcacIcam from "@/assets/logo-ucac-icam.png";
 
 export const TitleSlide = () => {
   return (
@@ -11,23 +12,19 @@ export const TitleSlide = () => {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
       </div>
 
-      <div className="text-center relative z-10">
-        {/* Icons */}
+      <div className="text-center relative z-10 flex flex-col items-center justify-center h-full">
+        {/* School Logo */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex justify-center gap-6 mb-8"
+          className="mb-8"
         >
-          <div className="p-4 glass-effect rounded-2xl animate-float">
-            <Store className="w-8 h-8 text-primary" />
-          </div>
-          <div className="p-4 glass-effect rounded-2xl animate-float" style={{ animationDelay: "0.5s" }}>
-            <BarChart3 className="w-8 h-8 text-accent" />
-          </div>
-          <div className="p-4 glass-effect rounded-2xl animate-float" style={{ animationDelay: "1s" }}>
-            <Zap className="w-8 h-8 text-primary" />
-          </div>
+          <img 
+            src={logoUcacIcam} 
+            alt="UCAC-ICAM Logo" 
+            className="h-20 md:h-24 w-auto mx-auto"
+          />
         </motion.div>
 
         {/* Title */}
@@ -55,7 +52,7 @@ export const TitleSlide = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="text-lg text-muted-foreground mb-12"
+          className="text-lg text-muted-foreground mb-8"
         >
           Système de gestion des ventes et stocks multi-boutiques
         </motion.p>
@@ -65,7 +62,7 @@ export const TitleSlide = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="flex flex-wrap justify-center gap-3 mb-16"
+          className="flex flex-wrap justify-center gap-3 mb-6"
         >
           {["Kenmogne", "Bedian", "Kogne Verra", "Kamdem"].map((name, i) => (
             <span 
@@ -78,6 +75,17 @@ export const TitleSlide = () => {
           ))}
         </motion.div>
 
+        {/* Academic Supervisor */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="mb-12"
+        >
+          <p className="text-sm text-muted-foreground mb-1">Encadreur académique</p>
+          <p className="text-lg font-semibold text-foreground">Igor Ewolo</p>
+        </motion.div>
+
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -85,7 +93,7 @@ export const TitleSlide = () => {
           transition={{ delay: 1.5 }}
           className="flex flex-col items-center gap-2 text-muted-foreground"
         >
-          <span className="text-sm">Découvrir</span>
+          <span className="text-sm">Utilisez les flèches ← → pour naviguer</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
