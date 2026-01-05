@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { AlertTriangle, Leaf, Check } from "lucide-react";
+import { AlertTriangle, Leaf, Check, Building2, MapPin } from "lucide-react";
 
 const problems = [
   { icon: "❌", text: "Gestion manuelle → Erreurs humaines, gaspillage" },
@@ -16,22 +16,48 @@ const solutions = [
   "Efficacité opérationnelle → Économie de temps",
 ];
 
-export const ContextSlide = () => {
+export const MiseEnSituationSlide = () => {
   return (
-    <SlideWrapper id="contexte">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="p-3 bg-destructive/20 rounded-xl">
-          <AlertTriangle className="w-6 h-6 text-destructive" />
+    <SlideWrapper id="mise-en-situation" slideNumber={1} sectionTitle="Mise en Situation">
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-4">
+        <div className="p-3 bg-primary/20 rounded-xl">
+          <Building2 className="w-6 h-6 text-primary" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold">
-          Contexte & <span className="text-gradient">Problématique</span>
+          Mise en <span className="text-gradient">Situation</span>
         </h2>
       </div>
 
-      <p className="text-lg text-muted-foreground mb-12 flex items-center gap-2">
+      {/* Client info */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="p-6 glass-effect rounded-2xl mb-8"
+      >
+        <div className="flex flex-wrap items-center gap-6">
+          <div>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Client</p>
+            <p className="text-xl font-bold text-gradient">Boutiques Nicko</p>
+          </div>
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <MapPin className="w-4 h-4" />
+            <span>Douala & Kribi, Cameroun</span>
+          </div>
+          <div className="px-3 py-1 bg-primary/10 rounded-full text-sm">
+            Commerce de détail multi-boutiques
+          </div>
+        </div>
+      </motion.div>
+
+      <div className="flex items-center gap-2 mb-8">
         <Leaf className="w-5 h-5 text-green-500" />
-        Digitaliser pour une gestion responsable
-      </p>
+        <p className="text-lg text-muted-foreground">
+          Digitaliser pour une gestion responsable
+        </p>
+      </div>
 
       <div className="grid md:grid-cols-2 gap-8">
         {/* Problems */}
@@ -42,7 +68,10 @@ export const ContextSlide = () => {
           viewport={{ once: true }}
           className="space-y-4"
         >
-          <h3 className="text-xl font-semibold text-destructive mb-6">Problèmes identifiés</h3>
+          <div className="flex items-center gap-2 mb-6">
+            <AlertTriangle className="w-5 h-5 text-destructive" />
+            <h3 className="text-xl font-semibold text-destructive">Problèmes identifiés</h3>
+          </div>
           {problems.map((problem, i) => (
             <motion.div
               key={i}
@@ -50,7 +79,7 @@ export const ContextSlide = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               viewport={{ once: true }}
-              className="flex items-start gap-3 p-4 glass-effect rounded-xl border-destructive/20"
+              className="flex items-start gap-3 p-4 glass-effect rounded-xl border border-destructive/20"
             >
               <span className="text-xl">{problem.icon}</span>
               <span className="text-muted-foreground">{problem.text}</span>
@@ -58,7 +87,7 @@ export const ContextSlide = () => {
           ))}
         </motion.div>
 
-        {/* Solutions */}
+        {/* RSE Approach */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -74,7 +103,7 @@ export const ContextSlide = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               viewport={{ once: true }}
-              className="flex items-start gap-3 p-4 glass-effect rounded-xl border-primary/20"
+              className="flex items-start gap-3 p-4 glass-effect rounded-xl border border-primary/20"
             >
               <div className="p-1 bg-primary/20 rounded-full">
                 <Check className="w-4 h-4 text-primary" />
