@@ -1,36 +1,54 @@
 import { Navigation } from "@/components/presentation/Navigation";
 import { TitleSlide } from "@/components/presentation/slides/TitleSlide";
-import { ContextSlide } from "@/components/presentation/slides/ContextSlide";
+import { TableOfContentsSlide } from "@/components/presentation/slides/TableOfContentsSlide";
+import { MiseEnSituationSlide } from "@/components/presentation/slides/MiseEnSituationSlide";
+import { AnalyseSolutionsSlide } from "@/components/presentation/slides/AnalyseSolutionsSlide";
 import { SolutionSlide } from "@/components/presentation/slides/SolutionSlide";
 import { BusinessSlide } from "@/components/presentation/slides/BusinessSlide";
+import { ManagementSlide } from "@/components/presentation/slides/ManagementSlide";
+import { RealisationsSlide } from "@/components/presentation/slides/RealisationsSlide";
 import { FeaturesSlide } from "@/components/presentation/slides/FeaturesSlide";
 import { ArchitectureSlide } from "@/components/presentation/slides/ArchitectureSlide";
-import { PotentialSlide } from "@/components/presentation/slides/PotentialSlide";
+import { DemonstrationSlide } from "@/components/presentation/slides/DemonstrationSlide";
 import { DemoSlide } from "@/components/presentation/slides/DemoSlide";
-import { DifferentiationSlide } from "@/components/presentation/slides/DifferentiationSlide";
-import { DeploymentSlide } from "@/components/presentation/slides/DeploymentSlide";
+import { ConclusionSlide } from "@/components/presentation/slides/ConclusionSlide";
 import { ImpactSlide } from "@/components/presentation/slides/ImpactSlide";
 import { VisionSlide } from "@/components/presentation/slides/VisionSlide";
-import { TeamSlide } from "@/components/presentation/slides/TeamSlide";
 import { ContactSlide } from "@/components/presentation/slides/ContactSlide";
 
 const Index = () => {
   return (
     <main className="bg-background text-foreground overflow-x-hidden">
       <Navigation />
+      
+      {/* Intro */}
       <TitleSlide />
-      <ContextSlide />
+      <TableOfContentsSlide />
+      
+      {/* Section 1: Mise en Situation */}
+      <MiseEnSituationSlide />
+      
+      {/* Section 2: Analyse et Solutions */}
+      <AnalyseSolutionsSlide />
       <SolutionSlide />
       <BusinessSlide />
+      
+      {/* Section 3: Management de Projet */}
+      <ManagementSlide />
+      
+      {/* Section 4: Réalisations */}
+      <RealisationsSlide />
       <FeaturesSlide />
       <ArchitectureSlide />
-      <PotentialSlide />
+      
+      {/* Section 5: Démonstration */}
+      <DemonstrationSlide />
       <DemoSlide />
-      <DifferentiationSlide />
-      <DeploymentSlide />
+      
+      {/* Section 6: Conclusion et Perspectives */}
+      <ConclusionSlide />
       <ImpactSlide />
       <VisionSlide />
-      <TeamSlide />
       <ContactSlide />
     </main>
   );
