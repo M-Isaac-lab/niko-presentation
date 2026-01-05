@@ -1,13 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Navigation } from "@/components/presentation/Navigation";
+import { TitleSlide } from "@/components/presentation/slides/TitleSlide";
+import { ContextSlide } from "@/components/presentation/slides/ContextSlide";
+import { SolutionSlide } from "@/components/presentation/slides/SolutionSlide";
+import { BusinessSlide } from "@/components/presentation/slides/BusinessSlide";
+import { FeaturesSlide } from "@/components/presentation/slides/FeaturesSlide";
+import { ArchitectureSlide } from "@/components/presentation/slides/ArchitectureSlide";
+import { PotentialSlide } from "@/components/presentation/slides/PotentialSlide";
+import { DemoSlide } from "@/components/presentation/slides/DemoSlide";
+import { DifferentiationSlide } from "@/components/presentation/slides/DifferentiationSlide";
+import { DeploymentSlide } from "@/components/presentation/slides/DeploymentSlide";
+import { ImpactSlide } from "@/components/presentation/slides/ImpactSlide";
+import { VisionSlide } from "@/components/presentation/slides/VisionSlide";
+import { TeamSlide } from "@/components/presentation/slides/TeamSlide";
+import { ContactSlide } from "@/components/presentation/slides/ContactSlide";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="bg-background text-foreground overflow-x-hidden">
+      <Navigation />
+      <TitleSlide />
+      <ContextSlide />
+      <SolutionSlide />
+      <BusinessSlide />
+      <FeaturesSlide />
+      <ArchitectureSlide />
+      <PotentialSlide />
+      <DemoSlide />
+      <DifferentiationSlide />
+      <DeploymentSlide />
+      <ImpactSlide />
+      <VisionSlide />
+      <TeamSlide />
+      <ContactSlide />
+    </main>
   );
 };
 
