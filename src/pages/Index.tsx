@@ -1,3 +1,4 @@
+import { useEffect, useCallback } from "react";
 import { Navigation } from "@/components/presentation/Navigation";
 import { TitleSlide } from "@/components/presentation/slides/TitleSlide";
 import { TableOfContentsSlide } from "@/components/presentation/slides/TableOfContentsSlide";
@@ -16,7 +17,64 @@ import { ImpactSlide } from "@/components/presentation/slides/ImpactSlide";
 import { VisionSlide } from "@/components/presentation/slides/VisionSlide";
 import { ContactSlide } from "@/components/presentation/slides/ContactSlide";
 
+const SLIDE_IDS = [
+  "titre",
+  "sommaire",
+  "situation",
+  "analyse",
+  "solution",
+  "business",
+  "management",
+  "realisations",
+  "features",
+  "architecture",
+  "demonstration",
+  "demo",
+  "conclusion",
+  "impact",
+  "vision",
+  "contact"
+];
+
 const Index = () => {
+  const getCurrentSlideIndex = useCallback(() => {
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    
+    for (let i = SLIDE_IDS.length - 1; i >= 0; i--) {
+      const element = document.getElementById(SLIDE_IDS[i]);
+      if (element && element.offsetTop <= scrollPosition) {
+        return i;
+      }
+    }
+    return 0;
+  }, []);
+
+  const navigateToSlide = useCallback((index: number) => {
+    if (index >= 0 && index < SLIDE_IDS.length) {
+      const element = document.getElementById(SLIDE_IDS[index]);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
+
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
+    const currentIndex = getCurrentSlideIndex();
+    
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      event.preventDefault();
+      navigateToSlide(currentIndex + 1);
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      event.preventDefault();
+      navigateToSlide(currentIndex - 1);
+    }
+  }, [getCurrentSlideIndex, navigateToSlide]);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
+
   return (
     <main className="bg-background text-foreground overflow-x-hidden">
       <Navigation />
