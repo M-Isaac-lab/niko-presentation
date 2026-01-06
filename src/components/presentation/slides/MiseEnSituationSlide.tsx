@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { AlertTriangle, Leaf, Check, Building2, MapPin } from "lucide-react";
+import { AlertTriangle, Leaf, Check, Building2, MapPin, BookOpen, Wifi, Eye, TrendingDown } from "lucide-react";
 
 const problems = [
-  { icon: "❌", text: "Gestion manuelle → Erreurs humaines, gaspillage" },
-  { icon: "❌", text: "Traçabilité absente → Impossible d'optimiser la chaîne" },
-  { icon: "❌", text: "Perte économique → Ruptures de stock non anticipées" },
-  { icon: "❌", text: "Inefficacité énergétique → Processus papier" },
+  { icon: BookOpen, text: "Gestion manuelle", desc: "Ventes enregistrées sur cahiers papier, perte de temps significative" },
+  { icon: Wifi, text: "Absence de synchronisation", desc: "Aucune communication entre les stocks de Douala et Kribi" },
+  { icon: Eye, text: "Manque de visibilité", desc: "Impossible d'identifier rapidement les produits performants" },
+  { icon: TrendingDown, text: "Ruptures de stock", desc: "Non anticipées, entraînant des ventes manquées" },
 ];
 
 const solutions = [
-  "Réduction des erreurs → Moins de gaspillage",
-  "Optimisation des stocks → Réduction du sur-stockage",
-  "Digitalisation → Suppression du papier",
-  "Efficacité opérationnelle → Économie de temps",
+  "Centraliser les stocks dans une base de données unique",
+  "Suivi temps réel des ventes avec synchronisation automatique",
+  "Système d'alertes automatiques pour les ruptures",
+  "Tableau de bord d'analyses de performance",
 ];
 
 export const MiseEnSituationSlide = () => {
@@ -35,42 +35,39 @@ export const MiseEnSituationSlide = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="p-6 glass-effect rounded-2xl mb-8"
+        className="p-5 glass-effect rounded-2xl mb-6"
       >
         <div className="flex flex-wrap items-center gap-6">
           <div>
             <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Client</p>
-            <p className="text-xl font-bold text-gradient">Boutiques Nicko</p>
+            <p className="text-xl font-bold text-gradient">Les Boutiques Nicko</p>
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
             <MapPin className="w-4 h-4" />
             <span>Douala & Kribi, Cameroun</span>
           </div>
           <div className="px-3 py-1 bg-primary/10 rounded-full text-sm">
-            Commerce de détail multi-boutiques
+            Décoration textile et d'intérieur
           </div>
         </div>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Entreprise familiale avec deux boutiques physiques fonctionnant de manière indépendante, 
+          reposant sur des processus manuels générant des frictions opérationnelles critiques.
+        </p>
       </motion.div>
 
-      <div className="flex items-center gap-2 mb-8">
-        <Leaf className="w-5 h-5 text-green-500" />
-        <p className="text-lg text-muted-foreground">
-          Digitaliser pour une gestion responsable
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-6">
         {/* Problems */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="space-y-4"
+          className="space-y-3"
         >
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-4">
             <AlertTriangle className="w-5 h-5 text-destructive" />
-            <h3 className="text-xl font-semibold text-destructive">Problèmes identifiés</h3>
+            <h3 className="text-lg font-semibold text-destructive">Problèmes identifiés</h3>
           </div>
           {problems.map((problem, i) => (
             <motion.div
@@ -81,21 +78,32 @@ export const MiseEnSituationSlide = () => {
               viewport={{ once: true }}
               className="flex items-start gap-3 p-4 glass-effect rounded-xl border border-destructive/20"
             >
-              <span className="text-xl">{problem.icon}</span>
-              <span className="text-muted-foreground">{problem.text}</span>
+              <div className="p-2 bg-destructive/10 rounded-lg flex-shrink-0">
+                <problem.icon className="w-4 h-4 text-destructive" />
+              </div>
+              <div>
+                <p className="font-medium text-foreground">{problem.text}</p>
+                <p className="text-sm text-muted-foreground">{problem.desc}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* RSE Approach */}
+        {/* Vision & Objectives */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="space-y-4"
+          className="space-y-3"
         >
-          <h3 className="text-xl font-semibold text-primary mb-6">Notre approche RSE</h3>
+          <div className="flex items-center gap-2 mb-4">
+            <Leaf className="w-5 h-5 text-green-500" />
+            <h3 className="text-lg font-semibold text-primary">Notre vision</h3>
+          </div>
+          <p className="text-sm text-muted-foreground mb-4 p-3 glass-effect rounded-lg">
+            Une plateforme unique pour <strong>centraliser</strong>, <strong>optimiser</strong> et <strong>piloter</strong> l'activité des deux boutiques.
+          </p>
           {solutions.map((solution, i) => (
             <motion.div
               key={i}
@@ -103,12 +111,12 @@ export const MiseEnSituationSlide = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               viewport={{ once: true }}
-              className="flex items-start gap-3 p-4 glass-effect rounded-xl border border-primary/20"
+              className="flex items-start gap-3 p-3 glass-effect rounded-xl border border-primary/20"
             >
-              <div className="p-1 bg-primary/20 rounded-full">
-                <Check className="w-4 h-4 text-primary" />
+              <div className="p-1.5 bg-primary/20 rounded-full flex-shrink-0">
+                <Check className="w-3 h-3 text-primary" />
               </div>
-              <span className="text-foreground">{solution}</span>
+              <span className="text-sm text-foreground">{solution}</span>
             </motion.div>
           ))}
         </motion.div>

@@ -3,15 +3,15 @@ import { SlideWrapper } from "../SlideWrapper";
 import { Users, GraduationCap, Handshake } from "lucide-react";
 
 const team = [
-  { name: "Kenmogne", role: "Gestion projet & relation client", email: "andre.kenmogne@2026.icam.fr" },
-  { name: "Bedian", role: "Développement frontend & UX", email: "isaac.bedian@2026.ucac-icam.com" },
-  { name: "Kongne Verra", role: "Infrastructure & déploiement", email: "verra.kogne@2026.ucac-icam.com" },
-  { name: "Kamdem", role: "Qualité & tests utilisateurs", email: "kamdem@2026.ucac-icam.com" },
-  { name: "François Landry", role: "Designer UX/UI", email: "francois.landry@2026.ucac-icam.com" },
+  { name: "KENMOGNE NGAMGA André Yoann", role: "Chef de projet & Relation client", email: "andre.kenmogne@2026.ucac-icam.com" },
+  { name: "BEDIAN DE RIKAM Isaac Quentin", role: "Développement Frontend & UX", email: "isaac.bedian@2026.ucac-icam.com" },
+  { name: "KONGNE KONGNE Verra Joyce", role: "Infrastructure & Déploiement", email: "verra.kongne@2026.ucac-icam.com" },
+  { name: "KAMDEM KAMDEM Joseph Léonard", role: "Qualité & Tests utilisateurs", email: "leonard.kamdem@2026.ucac-icam.com" },
+  { name: "AMOUGOU NGOUMOU François Landry", role: "Designer UX/UI", email: "francois.amougou@2026.ucac-icam.com" },
 ];
 
 const partners = [
-  { name: "Ucac-Icam", type: "Encadrement académique" },
+  { name: "UCAC-ICAM", type: "Encadrement académique" },
   { name: "Supabase", type: "Partenaire technologique" },
   { name: "Lovable", type: "Hébergement développement" },
 ];
@@ -45,13 +45,13 @@ export const TeamSlide = () => {
           >
             <div className="flex items-start gap-4">
               {/* Avatar placeholder */}
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-xl font-bold text-primary">
-                {member.name.charAt(0)}
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-xl font-bold text-primary flex-shrink-0">
+                {member.name.split(' ').slice(-1)[0].charAt(0)}
               </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold">{member.name}</h3>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-semibold leading-tight">{member.name}</h3>
                 <p className="text-primary text-sm mb-2">{member.role}</p>
-                <p className="text-xs text-muted-foreground">{member.email}</p>
+                <p className="text-xs text-muted-foreground truncate">{member.email}</p>
               </div>
             </div>
           </motion.div>
@@ -76,7 +76,7 @@ export const TeamSlide = () => {
           </div>
           <div>
             <p className="font-medium">Igor Ewolo</p>
-            <p className="text-sm text-muted-foreground">Ucac-Icam</p>
+            <p className="text-sm text-muted-foreground">UCAC-ICAM</p>
           </div>
         </div>
       </motion.div>
