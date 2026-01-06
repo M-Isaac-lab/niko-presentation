@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useRef } from "react";
+import { SlidesProvider } from "@/components/presentation/SlidesContext";
 import { Navigation } from "@/components/presentation/Navigation";
 import { TitleSlide } from "@/components/presentation/slides/TitleSlide";
 import { TableOfContentsSlide } from "@/components/presentation/slides/TableOfContentsSlide";
@@ -44,7 +45,7 @@ const Index = () => {
   const getCurrentSlideIndex = useCallback(() => {
     if (!containerRef.current) return 0;
     const scrollPosition = containerRef.current.scrollLeft + window.innerWidth / 2;
-    
+
     for (let i = SLIDE_IDS.length - 1; i >= 0; i--) {
       const element = document.getElementById(SLIDE_IDS[i]);
       if (element && element.offsetLeft <= scrollPosition) {
@@ -65,7 +66,7 @@ const Index = () => {
 
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     const currentIndex = getCurrentSlideIndex();
-    
+
     if (event.key === "ArrowRight" || event.key === "ArrowDown") {
       event.preventDefault();
       navigateToSlide(currentIndex + 1);
@@ -81,49 +82,52 @@ const Index = () => {
   }, [handleKeyDown]);
 
   return (
-    <main className="bg-background text-foreground overflow-hidden h-screen">
-      <Navigation />
-      
-      <div 
-        ref={containerRef}
-        className="horizontal-scroll-container overflow-x-auto overflow-y-hidden scrollbar-hide"
-        style={{ scrollSnapType: "x mandatory" }}
-      >
-        {/* Intro */}
-        <TitleSlide />
-        <TableOfContentsSlide />
-        
-        {/* Section 1: Présentation Entreprise */}
-        <EntrepriseSlide />
-        
-        {/* Section 2: Mise en Situation */}
-        <MiseEnSituationSlide />
-        
-        {/* Section 3: Analyse et Solutions */}
-        <AnalyseSolutionsSlide />
-        <SolutionSlide />
-        <BusinessSlide />
-        
-        {/* Section 4: Management de Projet */}
-        <ManagementSlide />
-        
-        {/* Section 5: Réalisations */}
-        <RealisationsSlide />
-        <FeaturesSlide />
-        <ArchitectureSlide />
-        
-        {/* Section 6: Démonstration */}
-        <DemonstrationSlide />
-        <DemoSlide />
-        
-        {/* Section 7: Conclusion et Perspectives */}
-        <ConclusionSlide />
-        <ImpactSlide />
-        <VisionSlide />
-        <ContactSlide />
-      </div>
-    </main>
+    <SlidesProvider slideIds={SLIDE_IDS}>
+      <main className="bg-background text-foreground overflow-hidden h-screen">
+        <Navigation />
+
+        <div
+          ref={containerRef}
+          className="horizontal-scroll-container overflow-x-auto overflow-y-hidden scrollbar-hide"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {/* Intro */}
+          <TitleSlide />
+          <TableOfContentsSlide />
+
+          {/* Section 1: Présentation Entreprise */}
+          <EntrepriseSlide />
+
+          {/* Section 2: Mise en Situation */}
+          <MiseEnSituationSlide />
+
+          {/* Section 3: Analyse et Solutions */}
+          <AnalyseSolutionsSlide />
+          <SolutionSlide />
+          <BusinessSlide />
+
+          {/* Section 4: Management de Projet */}
+          <ManagementSlide />
+
+          {/* Section 5: Réalisations */}
+          <RealisationsSlide />
+          <FeaturesSlide />
+          <ArchitectureSlide />
+
+          {/* Section 6: Démonstration */}
+          <DemonstrationSlide />
+          <DemoSlide />
+
+          {/* Section 7: Conclusion et Perspectives */}
+          <ConclusionSlide />
+          <ImpactSlide />
+          <VisionSlide />
+          <ContactSlide />
+        </div>
+      </main>
+    </SlidesProvider>
   );
 };
 
 export default Index;
+

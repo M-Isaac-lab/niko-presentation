@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronUp } from "lucide-react";
+import { useSlides } from "./SlidesContext";
 
 const sections = [
   { id: "titre", label: "Accueil", section: 0 },
@@ -23,17 +24,19 @@ const sections = [
 ];
 
 export const Navigation = () => {
+  const { slideIds } = useSlides();
+
   const [isOpen, setIsOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSlide, setActiveSlide] = useState("titre");
   const [currentSlideNumber, setCurrentSlideNumber] = useState(1);
-  const totalSlides = 17;
+  const totalSlides = Math.max(1, slideIds.length);
 
   useEffect(() => {
     const handleScroll = () => {
-      const container = document.querySelector('.horizontal-scroll-container');
+      const container = document.querySelector('.horizontal-scroll-container') as HTMLElement | null;
       if (!container) return;
-      
+
       const scrollPosition = container.scrollLeft + window.innerWidth / 2;
       setShowScrollTop(container.scrollLeft > 500);
 
@@ -42,19 +45,21 @@ export const Navigation = () => {
         const element = document.getElementById(section.id);
         if (element && element.offsetLeft <= scrollPosition) {
           setActiveSlide(section.id);
-          const index = sections.findIndex(s => s.id === section.id);
-          setCurrentSlideNumber(index + 1);
+          const slideIndex = slideIds.indexOf(section.id);
+          setCurrentSlideNumber(slideIndex >= 0 ? slideIndex + 1 : 1);
           break;
         }
       }
     };
 
-    const container = document.querySelector('.horizontal-scroll-container');
+    const container = document.querySelector('.horizontal-scroll-container') as HTMLElement | null;
     if (container) {
       container.addEventListener("scroll", handleScroll);
+      // set initial state on mount
+      handleScroll();
       return () => container.removeEventListener("scroll", handleScroll);
     }
-  }, []);
+  }, [slideIds]);
 
   const scrollToSlide = (id: string) => {
     const element = document.getElementById(id);
