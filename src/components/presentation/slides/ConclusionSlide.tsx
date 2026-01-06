@@ -1,31 +1,40 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { Target, TrendingUp, CheckCircle, Rocket, MessageSquare, Mail } from "lucide-react";
+import { Target, TrendingUp, CheckCircle, Rocket, MessageSquare, Mail, ShoppingCart, Users, Bell, BarChart } from "lucide-react";
 
 const achievements = [
-  "Application fonctionnelle déployée",
-  "2 boutiques connectées et opérationnelles",
-  "Mode hors ligne implémenté",
-  "Formation utilisateurs réalisée",
+  "Transformation opérationnelle réussie",
+  "Application fonctionnelle déployée en production",
+  "2 boutiques connectées et synchronisées",
+  "Mode hors ligne robuste implémenté",
+  "100% d'adoption par les utilisateurs",
+  "Formation complète réalisée",
 ];
 
 const kpis = [
-  { value: "70%", label: "Réduction erreurs stock" },
-  { value: "10h", label: "Gagnées par semaine" },
-  { value: "+15%", label: "Augmentation ventes" },
+  { value: "-75%", label: "Temps transaction" },
+  { value: "-60%", label: "Ruptures stock" },
+  { value: "99%", label: "Disponibilité" },
 ];
 
 const nextSteps = [
-  "Extension à d'autres boutiques",
-  "Module IA recommandations",
-  "Application mobile native",
-  "Marketplace B2B régionale",
+  { icon: ShoppingCart, text: "Intégration E-commerce", desc: "Vente en ligne synchronisée avec stocks physiques" },
+  { icon: Users, text: "Programme de Fidélité", desc: "Système de points pour achats récurrents" },
+  { icon: BarChart, text: "Analyses Prédictives", desc: "Anticiper les tendances de vente" },
+  { icon: Bell, text: "Notifications SMS/WhatsApp", desc: "Alertes clients pour promotions" },
+];
+
+const perennite = [
+  "Support post-déploiement : 2 semaines incluses",
+  "Plan de maintenance : Contrat à négocier pour année 1+",
+  "Documentation complète : Guides utilisateur et admin",
+  "Étudiant référent désigné pour passation",
 ];
 
 export const ConclusionSlide = () => {
   return (
     <SlideWrapper id="conclusion" slideNumber={7} sectionTitle="Conclusion">
-      <div className="flex items-center gap-3 mb-8">
+      <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-primary/20 rounded-xl">
           <Target className="w-6 h-6 text-primary" />
         </div>
@@ -34,30 +43,30 @@ export const ConclusionSlide = () => {
         </h2>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 gap-6 mb-8">
         {/* Achievements */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="p-6 card-gradient rounded-2xl border border-border/50"
+          className="p-5 card-gradient rounded-2xl border border-border/50"
         >
-          <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+          <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
             <CheckCircle className="w-5 h-5 text-green-500" />
             Objectifs atteints
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {achievements.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.3 }}
+                transition={{ delay: i * 0.05, duration: 0.3 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 text-muted-foreground"
+                className="flex items-center gap-2 text-sm text-muted-foreground"
               >
-                <CheckCircle className="w-4 h-4 text-primary" />
+                <CheckCircle className="w-3 h-3 text-primary flex-shrink-0" />
                 <span>{item}</span>
               </motion.div>
             ))}
@@ -70,24 +79,27 @@ export const ConclusionSlide = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="p-6 card-gradient rounded-2xl border border-border/50"
+          className="p-5 card-gradient rounded-2xl border border-border/50"
         >
-          <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+          <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
             <Rocket className="w-5 h-5 text-primary" />
-            Perspectives
+            Vision Future
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {nextSteps.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 10 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.3 }}
+                transition={{ delay: i * 0.05, duration: 0.3 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 text-muted-foreground"
+                className="flex items-start gap-3 p-2 glass-effect rounded-lg"
               >
-                <TrendingUp className="w-4 h-4 text-accent" />
-                <span>{item}</span>
+                <item.icon className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium">{item.text}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -100,9 +112,9 @@ export const ConclusionSlide = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-8"
       >
-        <h3 className="text-xl font-semibold mb-6 text-center">Impact mesuré</h3>
+        <h3 className="text-lg font-semibold mb-4 text-center">Impact Business Démontré</h3>
         <div className="grid grid-cols-3 gap-4">
           {kpis.map((kpi, i) => (
             <motion.div
@@ -111,11 +123,29 @@ export const ConclusionSlide = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               viewport={{ once: true }}
-              className="p-6 glass-effect rounded-2xl text-center"
+              className="p-4 glass-effect rounded-2xl text-center"
             >
-              <p className="text-4xl font-bold text-gradient">{kpi.value}</p>
-              <p className="text-sm text-muted-foreground mt-2">{kpi.label}</p>
+              <p className="text-3xl font-bold text-gradient">{kpi.value}</p>
+              <p className="text-sm text-muted-foreground mt-1">{kpi.label}</p>
             </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Pérennité */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        viewport={{ once: true }}
+        className="p-4 glass-effect rounded-xl mb-8"
+      >
+        <h4 className="font-semibold text-sm mb-3">Assurer la pérennité</h4>
+        <div className="flex flex-wrap gap-2">
+          {perennite.map((item, i) => (
+            <span key={i} className="px-3 py-1 bg-secondary rounded-full text-xs">
+              {item}
+            </span>
           ))}
         </div>
       </motion.div>
@@ -126,21 +156,23 @@ export const ConclusionSlide = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-center p-8 glass-effect rounded-2xl border border-primary/30 glow-effect"
+        className="text-center p-6 glass-effect rounded-2xl border border-primary/30 glow-effect"
       >
-        <h3 className="text-3xl font-bold text-gradient mb-4">Merci de votre attention</h3>
-        <p className="text-muted-foreground mb-6">Des questions ?</p>
+        <h3 className="text-2xl font-bold text-gradient mb-2">Merci de votre attention</h3>
+        <p className="text-sm text-muted-foreground mb-4">
+          NICKOPLUS PRO : Plus qu'une application, un levier de croissance durable
+        </p>
         <div className="flex justify-center gap-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg"
+            className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg cursor-pointer"
           >
             <MessageSquare className="w-4 h-4 text-primary" />
             <span className="text-sm">Questions</span>
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg"
+            className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg cursor-pointer"
           >
             <Mail className="w-4 h-4 text-primary" />
             <span className="text-sm">Contact</span>

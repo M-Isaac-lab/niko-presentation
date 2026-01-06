@@ -64,7 +64,7 @@ export const TitleSlide = () => {
           transition={{ delay: 1 }}
           className="flex flex-wrap justify-center gap-3 mb-6"
         >
-          {["Kenmogne", "Bedian", "Kongne Verra", "Kamdem", "François Landry"].map((name, i) => (
+          {["KENMOGNE André Yoann", "BEDIAN Isaac Quentin", "KONGNE Verra Joyce", "KAMDEM Joseph Léonard", "AMOUGOU François Landry"].map((name, i) => (
             <span 
               key={name}
               className="px-4 py-2 glass-effect rounded-full text-sm font-medium"
