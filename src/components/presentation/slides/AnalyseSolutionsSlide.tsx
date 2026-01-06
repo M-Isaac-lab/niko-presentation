@@ -18,7 +18,7 @@ const constraints = [
 
 export const AnalyseSolutionsSlide = () => {
   return (
-    <SlideWrapper id="analyse-solutions" slideNumber={2} sectionTitle="Analyse et Solutions">
+    <SlideWrapper id="analyse-solutions" slideNumber={3} sectionTitle="Analyse et Solutions">
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-primary/20 rounded-xl">
           <Lightbulb className="w-6 h-6 text-primary" />

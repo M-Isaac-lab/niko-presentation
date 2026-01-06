@@ -1,7 +1,8 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { Navigation } from "@/components/presentation/Navigation";
 import { TitleSlide } from "@/components/presentation/slides/TitleSlide";
 import { TableOfContentsSlide } from "@/components/presentation/slides/TableOfContentsSlide";
+import { EntrepriseSlide } from "@/components/presentation/slides/EntrepriseSlide";
 import { MiseEnSituationSlide } from "@/components/presentation/slides/MiseEnSituationSlide";
 import { AnalyseSolutionsSlide } from "@/components/presentation/slides/AnalyseSolutionsSlide";
 import { SolutionSlide } from "@/components/presentation/slides/SolutionSlide";
@@ -20,13 +21,14 @@ import { ContactSlide } from "@/components/presentation/slides/ContactSlide";
 const SLIDE_IDS = [
   "titre",
   "sommaire",
-  "situation",
-  "analyse",
+  "entreprise",
+  "mise-en-situation",
+  "analyse-solutions",
   "solution",
   "business",
   "management",
   "realisations",
-  "features",
+  "fonctionnalites",
   "architecture",
   "demonstration",
   "demo",
@@ -37,12 +39,15 @@ const SLIDE_IDS = [
 ];
 
 const Index = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const getCurrentSlideIndex = useCallback(() => {
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    if (!containerRef.current) return 0;
+    const scrollPosition = containerRef.current.scrollLeft + window.innerWidth / 2;
     
     for (let i = SLIDE_IDS.length - 1; i >= 0; i--) {
       const element = document.getElementById(SLIDE_IDS[i]);
-      if (element && element.offsetTop <= scrollPosition) {
+      if (element && element.offsetLeft <= scrollPosition) {
         return i;
       }
     }
@@ -53,7 +58,7 @@ const Index = () => {
     if (index >= 0 && index < SLIDE_IDS.length) {
       const element = document.getElementById(SLIDE_IDS[index]);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: "smooth", inline: "start" });
       }
     }
   }, []);
@@ -76,38 +81,47 @@ const Index = () => {
   }, [handleKeyDown]);
 
   return (
-    <main className="bg-background text-foreground overflow-x-hidden">
+    <main className="bg-background text-foreground overflow-hidden h-screen">
       <Navigation />
       
-      {/* Intro */}
-      <TitleSlide />
-      <TableOfContentsSlide />
-      
-      {/* Section 1: Mise en Situation */}
-      <MiseEnSituationSlide />
-      
-      {/* Section 2: Analyse et Solutions */}
-      <AnalyseSolutionsSlide />
-      <SolutionSlide />
-      <BusinessSlide />
-      
-      {/* Section 3: Management de Projet */}
-      <ManagementSlide />
-      
-      {/* Section 4: Réalisations */}
-      <RealisationsSlide />
-      <FeaturesSlide />
-      <ArchitectureSlide />
-      
-      {/* Section 5: Démonstration */}
-      <DemonstrationSlide />
-      <DemoSlide />
-      
-      {/* Section 6: Conclusion et Perspectives */}
-      <ConclusionSlide />
-      <ImpactSlide />
-      <VisionSlide />
-      <ContactSlide />
+      <div 
+        ref={containerRef}
+        className="horizontal-scroll-container overflow-x-auto overflow-y-hidden scrollbar-hide"
+        style={{ scrollSnapType: "x mandatory" }}
+      >
+        {/* Intro */}
+        <TitleSlide />
+        <TableOfContentsSlide />
+        
+        {/* Section 1: Présentation Entreprise */}
+        <EntrepriseSlide />
+        
+        {/* Section 2: Mise en Situation */}
+        <MiseEnSituationSlide />
+        
+        {/* Section 3: Analyse et Solutions */}
+        <AnalyseSolutionsSlide />
+        <SolutionSlide />
+        <BusinessSlide />
+        
+        {/* Section 4: Management de Projet */}
+        <ManagementSlide />
+        
+        {/* Section 5: Réalisations */}
+        <RealisationsSlide />
+        <FeaturesSlide />
+        <ArchitectureSlide />
+        
+        {/* Section 6: Démonstration */}
+        <DemonstrationSlide />
+        <DemoSlide />
+        
+        {/* Section 7: Conclusion et Perspectives */}
+        <ConclusionSlide />
+        <ImpactSlide />
+        <VisionSlide />
+        <ContactSlide />
+      </div>
     </main>
   );
 };

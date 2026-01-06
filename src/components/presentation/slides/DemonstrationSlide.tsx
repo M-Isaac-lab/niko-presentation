@@ -11,7 +11,7 @@ const demoSteps = [
 
 export const DemonstrationSlide = () => {
   return (
-    <SlideWrapper id="demonstration" slideNumber={5} sectionTitle="Démonstration">
+    <SlideWrapper id="demonstration" slideNumber={6} sectionTitle="Démonstration">
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-primary/20 rounded-xl">
           <Play className="w-6 h-6 text-primary" />

@@ -5,20 +5,21 @@ import { Menu, X, ChevronUp } from "lucide-react";
 const sections = [
   { id: "titre", label: "Accueil", section: 0 },
   { id: "sommaire", label: "Sommaire", section: 0 },
-  { id: "mise-en-situation", label: "1. Mise en Situation", section: 1 },
-  { id: "analyse-solutions", label: "2. Analyse & Solutions", section: 2 },
-  { id: "solution", label: "Solution", section: 2 },
-  { id: "business", label: "Business Model", section: 2 },
-  { id: "management", label: "3. Management", section: 3 },
-  { id: "realisations", label: "4. Réalisations", section: 4 },
-  { id: "fonctionnalites", label: "Fonctionnalités", section: 4 },
-  { id: "architecture", label: "Architecture", section: 4 },
-  { id: "demonstration", label: "5. Démonstration", section: 5 },
-  { id: "demo", label: "Démo Live", section: 5 },
-  { id: "conclusion", label: "6. Conclusion", section: 6 },
-  { id: "impact", label: "Impact", section: 6 },
-  { id: "vision", label: "Vision", section: 6 },
-  { id: "contact", label: "Contact", section: 6 },
+  { id: "entreprise", label: "1. Entreprise", section: 1 },
+  { id: "mise-en-situation", label: "2. Mise en Situation", section: 2 },
+  { id: "analyse-solutions", label: "3. Analyse & Solutions", section: 3 },
+  { id: "solution", label: "Solution", section: 3 },
+  { id: "business", label: "Business Model", section: 3 },
+  { id: "management", label: "4. Management", section: 4 },
+  { id: "realisations", label: "5. Réalisations", section: 5 },
+  { id: "fonctionnalites", label: "Fonctionnalités", section: 5 },
+  { id: "architecture", label: "Architecture", section: 5 },
+  { id: "demonstration", label: "6. Démonstration", section: 6 },
+  { id: "demo", label: "Démo Live", section: 6 },
+  { id: "conclusion", label: "7. Conclusion", section: 7 },
+  { id: "impact", label: "Impact", section: 7 },
+  { id: "vision", label: "Vision", section: 7 },
+  { id: "contact", label: "Contact", section: 7 },
 ];
 
 export const Navigation = () => {
@@ -26,18 +27,20 @@ export const Navigation = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSlide, setActiveSlide] = useState("titre");
   const [currentSlideNumber, setCurrentSlideNumber] = useState(1);
-  const totalSlides = 16;
+  const totalSlides = 17;
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 500);
-
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const container = document.querySelector('.horizontal-scroll-container');
+      if (!container) return;
       
+      const scrollPosition = container.scrollLeft + window.innerWidth / 2;
+      setShowScrollTop(container.scrollLeft > 500);
+
       const reversedSections = [...sections].reverse();
       for (const section of reversedSections) {
         const element = document.getElementById(section.id);
-        if (element && element.offsetTop <= scrollPosition) {
+        if (element && element.offsetLeft <= scrollPosition) {
           setActiveSlide(section.id);
           const index = sections.findIndex(s => s.id === section.id);
           setCurrentSlideNumber(index + 1);
@@ -46,14 +49,17 @@ export const Navigation = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const container = document.querySelector('.horizontal-scroll-container');
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      return () => container.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   const scrollToSlide = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
       setIsOpen(false);
     }
   };
@@ -93,12 +99,12 @@ export const Navigation = () => {
         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </motion.button>
 
-      {/* Desktop navigation dots */}
+      {/* Desktop navigation dots - now at bottom */}
       <motion.nav
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-1"
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 hidden md:flex gap-2 px-4 py-3 glass-effect rounded-full"
       >
         {sections.map((slide) => {
           const isMainSection = slide.section > 0 && slide.label.startsWith(String(slide.section));
@@ -106,17 +112,13 @@ export const Navigation = () => {
             <button
               key={slide.id}
               onClick={() => scrollToSlide(slide.id)}
-              className="group flex items-center justify-end gap-3"
+              className="group flex items-center justify-center relative"
+              title={slide.label}
             >
-              <span className={`text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                activeSlide === slide.id ? "text-primary" : "text-muted-foreground"
-              }`}>
-                {slide.label}
-              </span>
               <span className={`transition-all duration-300 ${
                 isMainSection 
-                  ? `w-3 h-3 rounded-sm ${activeSlide === slide.id ? "bg-primary scale-125" : "bg-muted-foreground/50 group-hover:bg-primary/70"}`
-                  : `w-2 h-2 rounded-full ${activeSlide === slide.id ? "bg-primary scale-150" : "bg-muted-foreground/30 group-hover:bg-primary/50"}`
+                  ? `w-3 h-3 rounded-sm ${activeSlide === slide.id ? "bg-primary scale-125" : "bg-muted-foreground/50 hover:bg-primary/70"}`
+                  : `w-2 h-2 rounded-full ${activeSlide === slide.id ? "bg-primary scale-150" : "bg-muted-foreground/30 hover:bg-primary/50"}`
               }`} />
             </button>
           );
@@ -159,7 +161,7 @@ export const Navigation = () => {
         )}
       </AnimatePresence>
 
-      {/* Scroll to top button */}
+      {/* Scroll to start button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -169,7 +171,7 @@ export const Navigation = () => {
             onClick={() => scrollToSlide("titre")}
             className="fixed bottom-6 right-6 z-40 p-3 bg-primary text-primary-foreground rounded-full shadow-lg hover:scale-110 transition-transform"
           >
-            <ChevronUp className="w-5 h-5" />
+            <ChevronUp className="w-5 h-5 rotate-[-90deg]" />
           </motion.button>
         )}
       </AnimatePresence>

@@ -24,7 +24,7 @@ const nextSteps = [
 
 export const ConclusionSlide = () => {
   return (
-    <SlideWrapper id="conclusion" slideNumber={6} sectionTitle="Conclusion">
+    <SlideWrapper id="conclusion" slideNumber={7} sectionTitle="Conclusion">
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-primary/20 rounded-xl">
           <Target className="w-6 h-6 text-primary" />
