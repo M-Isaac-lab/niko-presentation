@@ -1,28 +1,29 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { List, MapPin, Lightbulb, Users, Wrench, Play, Target } from "lucide-react";
+import { List, Building2, MapPin, Lightbulb, Users, Wrench, Play, Target } from "lucide-react";
 
 const sections = [
-  { number: 1, title: "Mise en Situation", icon: MapPin, description: "Contexte du projet et problématique RSE", id: "mise-en-situation" },
-  { number: 2, title: "Analyse et Solutions", icon: Lightbulb, description: "Notre approche et la solution NICKOPLUS PRO", id: "analyse-solutions" },
-  { number: 3, title: "Management de Projet", icon: Users, description: "Équipe, méthodologie et planification", id: "management" },
-  { number: 4, title: "Réalisations", icon: Wrench, description: "Fonctionnalités développées et architecture", id: "realisations" },
-  { number: 5, title: "Démonstration", icon: Play, description: "Présentation en direct de l'application", id: "demonstration" },
-  { number: 6, title: "Conclusion et Perspectives", icon: Target, description: "Bilan, impact et vision future", id: "conclusion" },
+  { number: 1, title: "Présentation Entreprise", icon: Building2, description: "Les Boutiques Nicko et leur activité", id: "entreprise" },
+  { number: 2, title: "Mise en Situation", icon: MapPin, description: "Contexte du projet et problématique RSE", id: "mise-en-situation" },
+  { number: 3, title: "Analyse et Solutions", icon: Lightbulb, description: "Notre approche et la solution NICKOPLUS PRO", id: "analyse-solutions" },
+  { number: 4, title: "Management de Projet", icon: Users, description: "Équipe, méthodologie et planification", id: "management" },
+  { number: 5, title: "Réalisations", icon: Wrench, description: "Fonctionnalités développées et architecture", id: "realisations" },
+  { number: 6, title: "Démonstration", icon: Play, description: "Présentation en direct de l'application", id: "demonstration" },
+  { number: 7, title: "Conclusion et Perspectives", icon: Target, description: "Bilan, impact et vision future", id: "conclusion" },
 ];
 
 export const TableOfContentsSlide = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
     }
   };
 
   return (
     <SlideWrapper id="sommaire">
       <div className="flex items-center gap-3 mb-8">
-        <div className="p-3 bg-primary/20 rounded-xl">
+        <div className="p-3 bg-primary/10 rounded-xl">
           <List className="w-6 h-6 text-primary" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold">

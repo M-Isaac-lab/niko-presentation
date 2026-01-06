@@ -18,7 +18,7 @@ const solutions = [
 
 export const MiseEnSituationSlide = () => {
   return (
-    <SlideWrapper id="mise-en-situation" slideNumber={1} sectionTitle="Mise en Situation">
+    <SlideWrapper id="mise-en-situation" slideNumber={2} sectionTitle="Mise en Situation">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
         <div className="p-3 bg-primary/20 rounded-xl">

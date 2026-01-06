@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { ChevronDown } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import logoUcacIcam from "@/assets/logo-ucac-icam.png";
 
 export const TitleSlide = () => {
@@ -8,8 +8,8 @@ export const TitleSlide = () => {
     <SlideWrapper id="titre" className="hero-gradient">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
       </div>
 
       <div className="text-center relative z-10 flex flex-col items-center justify-center h-full">
@@ -64,7 +64,7 @@ export const TitleSlide = () => {
           transition={{ delay: 1 }}
           className="flex flex-wrap justify-center gap-3 mb-6"
         >
-          {["Kenmogne", "Bedian", "Kogne Verra", "Kamdem"].map((name, i) => (
+          {["Kenmogne", "Bedian", "Kongne Verra", "Kamdem", "François Landry"].map((name, i) => (
             <span 
               key={name}
               className="px-4 py-2 glass-effect rounded-full text-sm font-medium"
@@ -95,10 +95,10 @@ export const TitleSlide = () => {
         >
           <span className="text-sm">Utilisez les flèches ← → pour naviguer</span>
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            animate={{ x: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <ChevronDown className="w-6 h-6" />
+            <ChevronRight className="w-6 h-6" />
           </motion.div>
         </motion.div>
       </div>

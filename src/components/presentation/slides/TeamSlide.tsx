@@ -5,8 +5,9 @@ import { Users, GraduationCap, Handshake } from "lucide-react";
 const team = [
   { name: "Kenmogne", role: "Gestion projet & relation client", email: "andre.kenmogne@2026.icam.fr" },
   { name: "Bedian", role: "Développement frontend & UX", email: "isaac.bedian@2026.ucac-icam.com" },
-  { name: "Kogne Verra", role: "Infrastructure & déploiement", email: "verra.kogne@2026.ucac-icam.com" },
+  { name: "Kongne Verra", role: "Infrastructure & déploiement", email: "verra.kogne@2026.ucac-icam.com" },
   { name: "Kamdem", role: "Qualité & tests utilisateurs", email: "kamdem@2026.ucac-icam.com" },
+  { name: "François Landry", role: "Designer UX/UI", email: "francois.landry@2026.ucac-icam.com" },
 ];
 
 const partners = [
@@ -19,7 +20,7 @@ export const TeamSlide = () => {
   return (
     <SlideWrapper id="equipe">
       <div className="flex items-center gap-3 mb-8">
-        <div className="p-3 bg-primary/20 rounded-xl">
+        <div className="p-3 bg-primary/10 rounded-xl">
           <Users className="w-6 h-6 text-primary" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold">
@@ -32,7 +33,7 @@ export const TeamSlide = () => {
       </p>
 
       {/* Team */}
-      <div className="grid md:grid-cols-2 gap-6 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {team.map((member, i) => (
           <motion.div
             key={member.name}
@@ -44,7 +45,7 @@ export const TeamSlide = () => {
           >
             <div className="flex items-start gap-4">
               {/* Avatar placeholder */}
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-xl font-bold">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-xl font-bold text-primary">
                 {member.name.charAt(0)}
               </div>
               <div className="flex-1">
@@ -70,7 +71,7 @@ export const TeamSlide = () => {
           <h3 className="text-lg font-semibold">Superviseur Académique</h3>
         </div>
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-lg font-bold">
+          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-lg font-bold text-primary">
             IE
           </div>
           <div>

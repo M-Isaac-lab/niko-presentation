@@ -5,8 +5,9 @@ import { Users, Calendar, GitBranch, CheckSquare, GraduationCap } from "lucide-r
 const team = [
   { name: "Kenmogne", role: "Chef de projet & Relation client", initial: "K" },
   { name: "Bedian", role: "Développement Frontend & UX", initial: "B" },
-  { name: "Kogne Verra", role: "Infrastructure & Déploiement", initial: "V" },
+  { name: "Kongne Verra", role: "Infrastructure & Déploiement", initial: "V" },
   { name: "Kamdem", role: "Qualité & Tests", initial: "K" },
+  { name: "François Landry", role: "Designer UX/UI", initial: "F" },
 ];
 
 const methodology = [
@@ -18,7 +19,7 @@ const methodology = [
 
 export const ManagementSlide = () => {
   return (
-    <SlideWrapper id="management" slideNumber={3} sectionTitle="Management de Projet">
+    <SlideWrapper id="management" slideNumber={4} sectionTitle="Management de Projet">
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-primary/20 rounded-xl">
           <Users className="w-6 h-6 text-primary" />
@@ -34,7 +35,7 @@ export const ManagementSlide = () => {
           <Users className="w-5 h-5 text-primary" />
           Équipe projet
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
