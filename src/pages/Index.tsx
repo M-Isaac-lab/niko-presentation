@@ -41,27 +41,24 @@ const SLIDE_IDS = [
 const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const currentSlideRef = useRef(0);
-
   const getCurrentSlideIndex = useCallback(() => {
-    if (!containerRef.current) return currentSlideRef.current;
-    const container = containerRef.current;
-    const slideWidth = window.innerWidth;
-    const scrollPosition = container.scrollLeft;
-    const index = Math.round(scrollPosition / slideWidth);
-    currentSlideRef.current = Math.max(0, Math.min(index, SLIDE_IDS.length - 1));
-    return currentSlideRef.current;
+    if (!containerRef.current) return 0;
+    const scrollPosition = containerRef.current.scrollLeft + window.innerWidth / 2;
+    
+    for (let i = SLIDE_IDS.length - 1; i >= 0; i--) {
+      const element = document.getElementById(SLIDE_IDS[i]);
+      if (element && element.offsetLeft <= scrollPosition) {
+        return i;
+      }
+    }
+    return 0;
   }, []);
 
   const navigateToSlide = useCallback((index: number) => {
     if (index >= 0 && index < SLIDE_IDS.length) {
-      currentSlideRef.current = index;
       const element = document.getElementById(SLIDE_IDS[index]);
-      if (element && containerRef.current) {
-        containerRef.current.scrollTo({
-          left: index * window.innerWidth,
-          behavior: "smooth"
-        });
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", inline: "start" });
       }
     }
   }, []);
