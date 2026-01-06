@@ -5,37 +5,44 @@ import { TitleSlide } from "@/components/presentation/slides/TitleSlide";
 import { TableOfContentsSlide } from "@/components/presentation/slides/TableOfContentsSlide";
 import { EntrepriseSlide } from "@/components/presentation/slides/EntrepriseSlide";
 import { MiseEnSituationSlide } from "@/components/presentation/slides/MiseEnSituationSlide";
+import { ObjectivesSlide } from "@/components/presentation/slides/ObjectivesSlide";
 import { AnalyseSolutionsSlide } from "@/components/presentation/slides/AnalyseSolutionsSlide";
 import { SolutionSlide } from "@/components/presentation/slides/SolutionSlide";
-import { BusinessSlide } from "@/components/presentation/slides/BusinessSlide";
+import { SolutionDetailsSlide } from "@/components/presentation/slides/SolutionDetailsSlide";
+import { BudgetSlide } from "@/components/presentation/slides/BudgetSlide";
 import { ManagementSlide } from "@/components/presentation/slides/ManagementSlide";
+import { RisksSlide } from "@/components/presentation/slides/RisksSlide";
 import { RealisationsSlide } from "@/components/presentation/slides/RealisationsSlide";
-import { FeaturesSlide } from "@/components/presentation/slides/FeaturesSlide";
 import { ArchitectureSlide } from "@/components/presentation/slides/ArchitectureSlide";
 import { DemonstrationSlide } from "@/components/presentation/slides/DemonstrationSlide";
-import { DemoSlide } from "@/components/presentation/slides/DemoSlide";
-import { ConclusionSlide } from "@/components/presentation/slides/ConclusionSlide";
 import { ImpactSlide } from "@/components/presentation/slides/ImpactSlide";
-import { VisionSlide } from "@/components/presentation/slides/VisionSlide";
+import { ConclusionSlide } from "@/components/presentation/slides/ConclusionSlide";
 import { ContactSlide } from "@/components/presentation/slides/ContactSlide";
 
 const SLIDE_IDS = [
   "titre",
   "sommaire",
+  // Section 1: Présentation Entreprise
   "entreprise",
+  // Section 2: Mise en Situation
   "mise-en-situation",
+  "objectifs",
+  // Section 3: Analyse et Solutions  
   "analyse-solutions",
   "solution",
-  "business",
+  "solution-details",
+  // Section 4: Management de Projet
   "management",
+  "budget",
+  "risques",
+  // Section 5: Réalisations
   "realisations",
-  "fonctionnalites",
   "architecture",
+  // Section 6: Démonstration
   "demonstration",
-  "demo",
-  "conclusion",
+  // Section 7: Conclusion et Perspectives
   "impact",
-  "vision",
+  "conclusion",
   "contact"
 ];
 
@@ -100,28 +107,28 @@ const Index = () => {
 
           {/* Section 2: Mise en Situation */}
           <MiseEnSituationSlide />
+          <ObjectivesSlide />
 
           {/* Section 3: Analyse et Solutions */}
           <AnalyseSolutionsSlide />
           <SolutionSlide />
-          <BusinessSlide />
+          <SolutionDetailsSlide />
 
           {/* Section 4: Management de Projet */}
           <ManagementSlide />
+          <BudgetSlide />
+          <RisksSlide />
 
           {/* Section 5: Réalisations */}
           <RealisationsSlide />
-          <FeaturesSlide />
           <ArchitectureSlide />
 
           {/* Section 6: Démonstration */}
           <DemonstrationSlide />
-          <DemoSlide />
 
           {/* Section 7: Conclusion et Perspectives */}
-          <ConclusionSlide />
           <ImpactSlide />
-          <VisionSlide />
+          <ConclusionSlide />
           <ContactSlide />
         </div>
       </main>
@@ -130,4 +137,3 @@ const Index = () => {
 };
 
 export default Index;
-
