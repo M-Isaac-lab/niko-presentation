@@ -23,7 +23,7 @@ export const SlideWrapper = ({
   return (
     <section
       id={id}
-      className={`slide-section flex flex-col justify-center py-16 md:py-24 px-4 md:px-8 relative overflow-hidden ${className}`}
+      className={`slide-section flex flex-col justify-center py-8 md:py-12 px-4 md:px-8 relative overflow-hidden ${className}`}
     >
       {/* Slide number indicator */}
       {typeof numberToShow === "number" && (

@@ -12,24 +12,24 @@ const features = [
 export const SolutionSlide = () => {
   return (
     <SlideWrapper id="solution" className="hero-gradient">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="p-3 bg-primary/20 rounded-xl">
-          <Sparkles className="w-6 h-6 text-primary" />
+      <div className="flex items-center gap-2 mb-3">
+        <div className="p-2 bg-primary/20 rounded-xl">
+          <Sparkles className="w-5 h-5 text-primary" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold">
           Notre Solution
         </h2>
       </div>
 
-      <p className="text-2xl md:text-3xl font-semibold text-gradient mb-4">
+      <p className="text-2xl md:text-3xl font-semibold text-gradient mb-2">
         NICKOPLUS PRO
       </p>
-      <p className="text-lg text-muted-foreground mb-12 max-w-xl">
+      <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl">
         Une plateforme tout-en-un pour les boutiques Nicko
       </p>
 
       {/* Features grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {features.map((feature, i) => (
           <motion.div
             key={feature.title}
@@ -38,12 +38,12 @@ export const SolutionSlide = () => {
             transition={{ delay: i * 0.1, duration: 0.5 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.05, y: -5 }}
-            className="p-6 card-gradient rounded-2xl border border-border/50 text-center group cursor-pointer"
+            className="p-3 card-gradient rounded-xl border border-border/50 text-center group cursor-pointer"
           >
-            <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-4 group-hover:bg-primary/20 transition-colors">
-              <feature.icon className="w-8 h-8 text-primary" />
+            <div className="inline-flex p-2 bg-primary/10 rounded-xl mb-2 group-hover:bg-primary/20 transition-colors">
+              <feature.icon className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+            <h3 className="font-semibold text-base mb-1">{feature.title}</h3>
             <p className="text-sm text-muted-foreground">{feature.desc}</p>
           </motion.div>
         ))}
@@ -55,7 +55,7 @@ export const SolutionSlide = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative max-w-4xl mx-auto"
+        className="relative max-w-3xl mx-auto"
       >
         <div className="relative rounded-2xl border border-border/50 overflow-hidden glow-effect shadow-2xl bg-background">
           {/* Browser chrome */}

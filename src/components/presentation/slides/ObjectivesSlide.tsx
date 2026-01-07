@@ -50,20 +50,20 @@ const objectives = [
 export const ObjectivesSlide = () => {
   return (
     <SlideWrapper id="objectifs">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-primary/20 rounded-xl">
-          <Target className="w-6 h-6 text-primary" />
+      <div className="flex items-center gap-2 mb-3">
+        <div className="p-2 bg-primary/20 rounded-xl">
+          <Target className="w-5 h-5 text-primary" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold">
           7 Objectifs <span className="text-gradient">Stratégiques</span>
         </h2>
       </div>
 
-      <p className="text-lg text-muted-foreground mb-8">
+      <p className="text-base md:text-lg text-muted-foreground mb-4">
         La digitalisation comme stratégie pour moderniser et pérenniser l'entreprise
       </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
         {objectives.map((objective, i) => (
           <motion.div
             key={objective.title}
@@ -71,19 +71,19 @@ export const ObjectivesSlide = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08, duration: 0.5 }}
             viewport={{ once: true }}
-            className="p-4 card-gradient rounded-xl border border-border/50 group hover:border-primary/30 transition-colors"
+            className="p-3 card-gradient rounded-xl border border-border/50 group hover:border-primary/30 transition-colors"
           >
-            <div className="flex items-start justify-between gap-3 mb-3">
-              <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                <objective.icon className="w-5 h-5 text-primary" />
+            <div className="flex items-start justify-between gap-2 mb-2">
+              <div className="p-1.5 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                <objective.icon className="w-4 h-4 text-primary" />
               </div>
-              <span className="flex items-center gap-1 text-xs text-green-500 font-medium">
-                <CheckCircle className="w-3 h-3" />
+              <span className="flex items-center gap-1 text-sm text-green-500 font-medium">
+                <CheckCircle className="w-4 h-4" />
                 {objective.status}
               </span>
             </div>
             <h4 className="font-semibold text-sm mb-1">{objective.title}</h4>
-            <p className="text-xs text-muted-foreground">{objective.desc}</p>
+            <p className="text-sm text-muted-foreground leading-tight">{objective.desc}</p>
           </motion.div>
         ))}
       </div>
@@ -94,7 +94,7 @@ export const ObjectivesSlide = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.5 }}
         viewport={{ once: true }}
-        className="mt-8 p-4 glass-effect rounded-xl text-center"
+        className="mt-4 p-3 glass-effect rounded-xl text-center"
       >
         <p className="text-gradient font-bold text-lg mb-1">100% des objectifs atteints</p>
         <p className="text-sm text-muted-foreground">
