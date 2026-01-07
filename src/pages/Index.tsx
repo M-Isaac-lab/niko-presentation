@@ -11,6 +11,7 @@ import { SolutionSlide } from "@/components/presentation/slides/SolutionSlide";
 import { SolutionDetailsSlide } from "@/components/presentation/slides/SolutionDetailsSlide";
 import { BudgetSlide } from "@/components/presentation/slides/BudgetSlide";
 import { ManagementSlide } from "@/components/presentation/slides/ManagementSlide";
+import { PlanningSlide } from "@/components/presentation/slides/PlanningSlide";
 import { RisksSlide } from "@/components/presentation/slides/RisksSlide";
 import { RealisationsSlide } from "@/components/presentation/slides/RealisationsSlide";
 import { ArchitectureSlide } from "@/components/presentation/slides/ArchitectureSlide";
@@ -33,6 +34,7 @@ const SLIDE_IDS = [
   "solution-details",
   // Section 4: Management de Projet
   "management",
+  "planning",
   "budget",
   "risques",
   // Section 5: Réalisations
@@ -116,6 +118,7 @@ const Index = () => {
 
           {/* Section 4: Management de Projet */}
           <ManagementSlide />
+          <PlanningSlide />
           <BudgetSlide />
           <RisksSlide />
 

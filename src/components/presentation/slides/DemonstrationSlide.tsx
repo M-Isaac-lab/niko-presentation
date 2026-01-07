@@ -51,7 +51,7 @@ export const DemonstrationSlide = () => {
             </div>
             <div className="flex-1 mx-4">
               <div className="bg-background/50 rounded px-3 py-1 text-sm text-muted-foreground text-center">
-                nickoplus-pro.lovable.app
+                nikoplus.lovable.app
               </div>
             </div>
           </div>

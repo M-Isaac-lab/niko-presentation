@@ -16,8 +16,8 @@ const nextSteps = [
 
 const contacts = [
   { icon: Mail, value: "team@nickoplus-project.com", href: "mailto:team@nickoplus-project.com" },
-  { icon: Phone, value: "+237 XXX XX XX XX", href: "tel:+237" },
-  { icon: Globe, value: "nickoplus.lovable.app", href: "https://nickoplus.lovable.app" },
+  { icon: Phone, value: "+237 696 623 604", href: "tel:+237696623604" },
+  { icon: Globe, value: "nikoplus.lovable.app", href: "https://nikoplus.lovable.app" },
   { icon: Github, value: "github.com/Ken-Andre/nikoplus", href: "https://github.com/Ken-Andre/nikoplus" },
 ];
 
