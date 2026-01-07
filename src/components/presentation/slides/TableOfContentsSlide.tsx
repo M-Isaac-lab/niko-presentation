@@ -32,7 +32,7 @@ export const TableOfContentsSlide = () => {
       </div>
 
       <p className="text-lg text-muted-foreground mb-10">
-        Plan de la présentation — <span className="font-semibold">19 slides</span>
+        Plan de la présentation — <span className="font-semibold">21 slides</span>
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -84,7 +84,7 @@ export const TableOfContentsSlide = () => {
           { section: "Management", count: 4 },
           { section: "Réalisations", count: 2 },
           { section: "Démo", count: 1 },
-          { section: "Conclusion", count: 3 },
+          { section: "Conclusion", count: 5 },
         ].map((item) => (
           <span key={item.section} className="px-3 py-1 glass-effect rounded-full text-xs">
             {item.section} <span className="text-primary font-semibold">({item.count})</span>

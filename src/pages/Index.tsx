@@ -17,6 +17,8 @@ import { RealisationsSlide } from "@/components/presentation/slides/Realisations
 import { ArchitectureSlide } from "@/components/presentation/slides/ArchitectureSlide";
 import { DemonstrationSlide } from "@/components/presentation/slides/DemonstrationSlide";
 import { ImpactSlide } from "@/components/presentation/slides/ImpactSlide";
+import { RSESlide } from "@/components/presentation/slides/RSESlide";
+import { BusinessModelSlide } from "@/components/presentation/slides/BusinessModelSlide";
 import { ConclusionSlide } from "@/components/presentation/slides/ConclusionSlide";
 import { ContactSlide } from "@/components/presentation/slides/ContactSlide";
 
@@ -44,6 +46,8 @@ const SLIDE_IDS = [
   "demonstration",
   // Section 7: Conclusion et Perspectives
   "impact",
+  "rse",
+  "business-model",
   "conclusion",
   "contact"
 ];
@@ -131,6 +135,8 @@ const Index = () => {
 
           {/* Section 7: Conclusion et Perspectives */}
           <ImpactSlide />
+          <RSESlide />
+          <BusinessModelSlide />
           <ConclusionSlide />
           <ContactSlide />
         </div>

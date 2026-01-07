@@ -20,6 +20,8 @@ const sections = [
   { id: "architecture", label: "Architecture", section: 5 },
   { id: "demonstration", label: "6. Démonstration", section: 6 },
   { id: "impact", label: "7. Conclusion", section: 7 },
+  { id: "rse", label: "Impact RSE", section: 7 },
+  { id: "business-model", label: "Business Model", section: 7 },
   { id: "conclusion", label: "Bilan", section: 7 },
   { id: "contact", label: "Contact", section: 7 },
 ];
