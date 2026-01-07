@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronUp } from "lucide-react";
+import { Menu, X, ChevronUp, Download } from "lucide-react";
 import { useSlides } from "./SlidesContext";
+import { exportToPPT } from "@/lib/exportPPT";
 
 const sections = [
   { id: "titre", label: "Accueil", section: 0 },
   { id: "sommaire", label: "Sommaire", section: 0 },
   { id: "entreprise", label: "1. Entreprise", section: 1 },
   { id: "mise-en-situation", label: "2. Mise en Situation", section: 2 },
+  { id: "objectifs", label: "Objectifs", section: 2 },
   { id: "analyse-solutions", label: "3. Analyse & Solutions", section: 3 },
   { id: "solution", label: "Solution", section: 3 },
-  { id: "business", label: "Business Model", section: 3 },
+  { id: "solution-details", label: "Détails", section: 3 },
   { id: "management", label: "4. Management", section: 4 },
+  { id: "planning", label: "Planning", section: 4 },
+  { id: "budget", label: "Budget", section: 4 },
+  { id: "risques", label: "Risques", section: 4 },
   { id: "realisations", label: "5. Réalisations", section: 5 },
-  { id: "fonctionnalites", label: "Fonctionnalités", section: 5 },
   { id: "architecture", label: "Architecture", section: 5 },
   { id: "demonstration", label: "6. Démonstration", section: 6 },
-  { id: "demo", label: "Démo Live", section: 6 },
-  { id: "conclusion", label: "7. Conclusion", section: 7 },
-  { id: "impact", label: "Impact", section: 7 },
-  { id: "vision", label: "Vision", section: 7 },
+  { id: "impact", label: "7. Conclusion", section: 7 },
+  { id: "conclusion", label: "Bilan", section: 7 },
   { id: "contact", label: "Contact", section: 7 },
 ];
 
@@ -69,6 +71,10 @@ export const Navigation = () => {
     }
   };
 
+  const handleExportPPT = () => {
+    exportToPPT();
+  };
+
   return (
     <>
       {/* Progress bar */}
@@ -93,6 +99,18 @@ export const Navigation = () => {
         <span className="text-primary">{String(currentSlideNumber).padStart(2, '0')}</span>
         <span className="text-muted-foreground"> / {totalSlides}</span>
       </motion.div>
+
+      {/* Export PPT button */}
+      <motion.button
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        onClick={handleExportPPT}
+        className="fixed top-4 right-16 md:right-4 z-50 px-4 py-2 glass-effect rounded-full text-sm font-medium flex items-center gap-2 hover:bg-primary/20 transition-colors"
+        title="Exporter en PowerPoint"
+      >
+        <Download className="w-4 h-4 text-primary" />
+        <span className="hidden md:inline">Export PPT</span>
+      </motion.button>
 
       {/* Mobile menu button */}
       <motion.button
@@ -161,6 +179,17 @@ export const Navigation = () => {
                   </motion.button>
                 );
               })}
+              {/* Export button in mobile menu */}
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: sections.length * 0.03 }}
+                onClick={handleExportPPT}
+                className="mt-4 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Exporter en PPT
+              </motion.button>
             </nav>
           </motion.div>
         )}

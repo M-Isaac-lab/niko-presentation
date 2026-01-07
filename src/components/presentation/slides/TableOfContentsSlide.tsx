@@ -32,7 +32,7 @@ export const TableOfContentsSlide = () => {
       </div>
 
       <p className="text-lg text-muted-foreground mb-10">
-        Plan de la présentation — <span className="font-semibold">18 slides</span>
+        Plan de la présentation — <span className="font-semibold">19 slides</span>
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -81,7 +81,7 @@ export const TableOfContentsSlide = () => {
           { section: "Entreprise", count: 1 },
           { section: "Situation", count: 2 },
           { section: "Solutions", count: 3 },
-          { section: "Management", count: 3 },
+          { section: "Management", count: 4 },
           { section: "Réalisations", count: 2 },
           { section: "Démo", count: 1 },
           { section: "Conclusion", count: 3 },
