@@ -49,37 +49,57 @@ export const SolutionSlide = () => {
         ))}
       </div>
 
-      {/* Mockup placeholder */}
+      {/* Dashboard Screenshot */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="relative max-w-3xl mx-auto"
+        className="relative max-w-4xl mx-auto"
       >
-        <div className="aspect-video card-gradient rounded-2xl border border-border/50 overflow-hidden glow-effect">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="flex gap-2 mb-4 justify-center">
-                <div className="w-3 h-3 rounded-full bg-destructive" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
+        <div className="relative rounded-2xl border border-border/50 overflow-hidden glow-effect shadow-2xl bg-background">
+          {/* Browser chrome */}
+          <div className="absolute top-0 left-0 right-0 p-3 bg-secondary/80 backdrop-blur-sm flex items-center gap-2 z-10 border-b border-border/50">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-destructive" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500" />
+              <div className="w-3 h-3 rounded-full bg-green-500" />
+            </div>
+            <div className="flex-1 mx-4">
+              <div className="bg-background/50 rounded px-3 py-1 text-xs text-muted-foreground text-center">
+                nikoplus.lovable.app
               </div>
-              <p className="text-muted-foreground">Interface Dashboard</p>
             </div>
           </div>
-          {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="grid grid-cols-6 h-full">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="border-r border-primary/30" />
-              ))}
-            </div>
-            <div className="absolute inset-0 grid grid-rows-4">
-              {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="border-b border-primary/30" />
-              ))}
-            </div>
+          {/* Dashboard Image */}
+          <div className="relative w-full aspect-video bg-gradient-to-br from-primary/5 to-accent/5">
+            <img 
+              src="/dashboard-screenshot.png" 
+              alt="Tableau de Bord Manager NICKOPLUS PRO - Dashboard avec KPIs, graphiques et métriques"
+              className="w-full h-full object-contain"
+              style={{ paddingTop: '40px' }} // Pour laisser de l'espace au browser chrome
+              onError={(e) => {
+                // Fallback si l'image n'existe pas encore
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const fallback = target.parentElement;
+                if (fallback) {
+                  fallback.innerHTML = `
+                    <div class="absolute inset-0 flex items-center justify-center pt-10">
+                      <div class="text-center">
+                        <div class="flex gap-2 mb-4 justify-center">
+                          <div class="w-3 h-3 rounded-full bg-destructive"></div>
+                          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <p class="text-muted-foreground mb-2">Interface Dashboard</p>
+                        <p class="text-xs text-muted-foreground">Placez l'image dashboard-screenshot.png dans /public</p>
+                      </div>
+                    </div>
+                  `;
+                }
+              }}
+            />
           </div>
         </div>
       </motion.div>

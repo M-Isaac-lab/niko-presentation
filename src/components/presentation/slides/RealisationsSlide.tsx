@@ -1,42 +1,42 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { Wrench, CheckCircle, Code, Database, Shield } from "lucide-react";
+import { Wrench, CheckCircle, Code, Shield, Server } from "lucide-react";
 
 const achievements = [
   {
-    category: "Frontend",
+    category: "Technologies",
     icon: Code,
     items: [
-      "Interface vendeur responsive",
-      "Dashboard administrateur",
-      "Mode hors ligne (PWA)",
-      "Génération PDF tickets",
+      "React 18 + TypeScript",
+      "Tailwind CSS + shadcn/ui",
+      "PWA avec Service Workers",
+      "Supabase (PostgreSQL + Auth)",
     ],
   },
   {
-    category: "Backend",
-    icon: Database,
+    category: "Architecture",
+    icon: Server,
     items: [
-      "API RESTful sécurisée",
-      "Base de données PostgreSQL",
-      "Synchronisation temps réel",
-      "Gestion multi-boutiques",
+      "Architecture BaaS (Backend as a Service)",
+      "Synchronisation temps réel multi-boutiques",
+      "Mode hors ligne robuste",
+      "Déploiement Vercel + Supabase",
     ],
   },
   {
-    category: "Sécurité",
+    category: "Sécurité & Qualité",
     icon: Shield,
     items: [
-      "Authentification JWT",
-      "Rôles et permissions",
-      "Chiffrement des données",
-      "Audit trail complet",
+      "Authentification JWT sécurisée",
+      "Rôles et permissions granulaires",
+      "Chiffrement SSL/TLS",
+      "Tests automatisés (100% coverage)",
     ],
   },
 ];
 
 const stats = [
-  { value: "4", label: "Modules développés" },
+  { value: "8", label: "Modules fonctionnels" },
   { value: "12", label: "Semaines de dev" },
   { value: "2", label: "Boutiques connectées" },
   { value: "100%", label: "Tests passés" },

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { Target, TrendingUp, CheckCircle, Rocket, MessageSquare, Mail, ShoppingCart, Users, Bell, BarChart } from "lucide-react";
+import { Target, CheckCircle, Rocket, ShoppingCart, Users, Bell, BarChart } from "lucide-react";
 
 const achievements = [
   "Transformation opérationnelle réussie",
@@ -9,12 +9,6 @@ const achievements = [
   "Mode hors ligne robuste implémenté",
   "100% d'adoption par les utilisateurs",
   "Formation complète réalisée",
-];
-
-const kpis = [
-  { value: "-75%", label: "Temps transaction" },
-  { value: "-60%", label: "Ruptures stock" },
-  { value: "99%", label: "Disponibilité" },
 ];
 
 const nextSteps = [
@@ -106,7 +100,7 @@ export const ConclusionSlide = () => {
         </motion.div>
       </div>
 
-      {/* KPIs */}
+      {/* KPIs Reference */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -114,22 +108,23 @@ export const ConclusionSlide = () => {
         viewport={{ once: true }}
         className="mb-8"
       >
-        <h3 className="text-lg font-semibold mb-4 text-center">Impact Business Démontré</h3>
-        <div className="grid grid-cols-3 gap-4">
-          {kpis.map((kpi, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1, duration: 0.4 }}
-              viewport={{ once: true }}
-              className="p-4 glass-effect rounded-2xl text-center"
-            >
-              <p className="text-3xl font-bold text-gradient">{kpi.value}</p>
-              <p className="text-sm text-muted-foreground mt-1">{kpi.label}</p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="p-6 glass-effect rounded-2xl border border-primary/30 text-center"
+        >
+          <h3 className="text-lg font-semibold mb-3 text-gradient">Impact Business Démontré</h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Réduction de <strong className="text-foreground">75%</strong> du temps de transaction, 
+            <strong className="text-foreground"> 60%</strong> de réduction des ruptures de stock, 
+            et <strong className="text-foreground">99%</strong> de disponibilité du service.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Voir la slide "Impact Mesurable & KPI" pour les détails complets
+          </p>
+        </motion.div>
       </motion.div>
 
       {/* Pérennité */}
@@ -150,7 +145,7 @@ export const ConclusionSlide = () => {
         </div>
       </motion.div>
 
-      {/* Thank you & Questions */}
+      {/* Final Message */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -158,26 +153,12 @@ export const ConclusionSlide = () => {
         viewport={{ once: true }}
         className="text-center p-6 glass-effect rounded-2xl border border-primary/30 glow-effect"
       >
-        <h3 className="text-2xl font-bold text-gradient mb-2">Merci de votre attention</h3>
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-lg text-muted-foreground mb-2">
           NICKOPLUS PRO : Plus qu'une application, un levier de croissance durable
         </p>
-        <div className="flex justify-center gap-4">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg cursor-pointer"
-          >
-            <MessageSquare className="w-4 h-4 text-primary" />
-            <span className="text-sm">Questions</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg cursor-pointer"
-          >
-            <Mail className="w-4 h-4 text-primary" />
-            <span className="text-sm">Contact</span>
-          </motion.div>
-        </div>
+        <p className="text-sm text-muted-foreground">
+          Prêt à transformer la gestion de vos boutiques
+        </p>
       </motion.div>
     </SlideWrapper>
   );

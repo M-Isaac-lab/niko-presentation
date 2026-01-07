@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { Lightbulb, Target, CheckCircle, ArrowRight } from "lucide-react";
-
-const objectives = [
-  { title: "Automatiser", desc: "Les processus de vente et de suivi des stocks" },
-  { title: "Centraliser", desc: "Les données de toutes les boutiques" },
-  { title: "Optimiser", desc: "La prise de décision avec des KPIs en temps réel" },
-  { title: "Simplifier", desc: "L'expérience vendeur et administrateur" },
-];
+import { Lightbulb, AlertCircle, ArrowRight, Zap } from "lucide-react";
 
 const constraints = [
   "Budget limité (solution open-source)",
   "Connexion internet instable",
   "Personnel peu formé au numérique",
   "Multi-localisation des boutiques",
+];
+
+const solutionFeatures = [
+  "Application web progressive (PWA) fonctionnant hors ligne",
+  "Synchronisation automatique multi-boutiques",
+  "Interface intuitive adaptée aux utilisateurs peu familiers avec le numérique",
+  "Solution open-source pour maîtriser les coûts",
 ];
 
 export const AnalyseSolutionsSlide = () => {
@@ -29,7 +29,7 @@ export const AnalyseSolutionsSlide = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">
-        {/* Objectives */}
+        {/* Constraints */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,30 +38,27 @@ export const AnalyseSolutionsSlide = () => {
           className="p-6 card-gradient rounded-2xl border border-border/50"
         >
           <div className="flex items-center gap-2 mb-6">
-            <Target className="w-5 h-5 text-primary" />
-            <h3 className="text-xl font-semibold">Objectifs du projet</h3>
+            <AlertCircle className="w-5 h-5 text-accent" />
+            <h3 className="text-xl font-semibold">Contraintes identifiées</h3>
           </div>
-          <div className="space-y-4">
-            {objectives.map((obj, i) => (
+          <div className="space-y-3">
+            {constraints.map((constraint, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.4 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-3"
+                className="flex items-center gap-3 p-3 glass-effect rounded-lg border border-accent/20"
               >
-                <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                <div>
-                  <span className="font-semibold text-foreground">{obj.title}</span>
-                  <p className="text-sm text-muted-foreground">{obj.desc}</p>
-                </div>
+                <ArrowRight className="w-4 h-4 text-accent" />
+                <span className="text-muted-foreground">{constraint}</span>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Constraints */}
+        {/* Solution Features */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,19 +66,24 @@ export const AnalyseSolutionsSlide = () => {
           viewport={{ once: true }}
           className="p-6 card-gradient rounded-2xl border border-border/50"
         >
-          <h3 className="text-xl font-semibold mb-6">Contraintes identifiées</h3>
+          <div className="flex items-center gap-2 mb-6">
+            <Zap className="w-5 h-5 text-primary" />
+            <h3 className="text-xl font-semibold">Notre approche</h3>
+          </div>
           <div className="space-y-3">
-            {constraints.map((constraint, i) => (
+            {solutionFeatures.map((feature, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.4 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 p-3 glass-effect rounded-lg"
+                className="flex items-start gap-3 p-3 glass-effect rounded-lg border border-primary/20"
               >
-                <ArrowRight className="w-4 h-4 text-accent" />
-                <span className="text-muted-foreground">{constraint}</span>
+                <div className="p-1 bg-primary/20 rounded-full flex-shrink-0 mt-0.5">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                </div>
+                <span className="text-sm text-foreground">{feature}</span>
               </motion.div>
             ))}
           </div>

@@ -1,19 +1,12 @@
 import { motion } from "framer-motion";
 import { SlideWrapper } from "../SlideWrapper";
-import { AlertTriangle, Leaf, Check, Building2, MapPin, BookOpen, Wifi, Eye, TrendingDown } from "lucide-react";
+import { AlertTriangle, Leaf, Building2, MapPin, BookOpen, Wifi, Eye, TrendingDown } from "lucide-react";
 
 const problems = [
   { icon: BookOpen, text: "Gestion manuelle", desc: "Ventes enregistrées sur cahiers papier, perte de temps significative" },
   { icon: Wifi, text: "Absence de synchronisation", desc: "Aucune communication entre les stocks de Douala et Kribi" },
   { icon: Eye, text: "Manque de visibilité", desc: "Impossible d'identifier rapidement les produits performants" },
   { icon: TrendingDown, text: "Ruptures de stock", desc: "Non anticipées, entraînant des ventes manquées" },
-];
-
-const solutions = [
-  "Centraliser les stocks dans une base de données unique",
-  "Suivi temps réel des ventes avec synchronisation automatique",
-  "Système d'alertes automatiques pour les ruptures",
-  "Tableau de bord d'analyses de performance",
 ];
 
 export const MiseEnSituationSlide = () => {
@@ -29,7 +22,7 @@ export const MiseEnSituationSlide = () => {
         </h2>
       </div>
 
-      {/* Client info */}
+      {/* Client info - Version simplifiée */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -39,15 +32,12 @@ export const MiseEnSituationSlide = () => {
       >
         <div className="flex flex-wrap items-center gap-6">
           <div>
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Client</p>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">Contexte</p>
             <p className="text-xl font-bold text-gradient">Les Boutiques Nicko</p>
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
             <MapPin className="w-4 h-4" />
             <span>Douala & Kribi, Cameroun</span>
-          </div>
-          <div className="px-3 py-1 bg-primary/10 rounded-full text-sm">
-            Décoration textile et d'intérieur
           </div>
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
@@ -89,7 +79,7 @@ export const MiseEnSituationSlide = () => {
           ))}
         </motion.div>
 
-        {/* Vision & Objectives */}
+        {/* Vision générale - Sans liste détaillée */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -101,24 +91,20 @@ export const MiseEnSituationSlide = () => {
             <Leaf className="w-5 h-5 text-green-500" />
             <h3 className="text-lg font-semibold text-primary">Notre vision</h3>
           </div>
-          <p className="text-sm text-muted-foreground mb-4 p-3 glass-effect rounded-lg">
-            Une plateforme unique pour <strong>centraliser</strong>, <strong>optimiser</strong> et <strong>piloter</strong> l'activité des deux boutiques.
-          </p>
-          {solutions.map((solution, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.4 }}
-              viewport={{ once: true }}
-              className="flex items-start gap-3 p-3 glass-effect rounded-xl border border-primary/20"
-            >
-              <div className="p-1.5 bg-primary/20 rounded-full flex-shrink-0">
-                <Check className="w-3 h-3 text-primary" />
-              </div>
-              <span className="text-sm text-foreground">{solution}</span>
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="p-6 card-gradient rounded-xl border border-primary/30"
+          >
+            <p className="text-base text-foreground mb-4">
+              Une plateforme unique pour <strong className="text-gradient">centraliser</strong>, <strong className="text-gradient">optimiser</strong> et <strong className="text-gradient">piloter</strong> l'activité des deux boutiques.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Les objectifs stratégiques détaillés seront présentés dans la section suivante.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </SlideWrapper>
